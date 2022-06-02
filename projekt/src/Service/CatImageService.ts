@@ -9,4 +9,4 @@ getRandomCatImage: async () => {
 },
 });
 
-export default CatImageService;
+export default CatImageService; 
