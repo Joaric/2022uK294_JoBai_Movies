@@ -1,9 +1,13 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { PureComponent } from "react";
 
-const RandomCatForm = () => (
+type Prop = {
+  handleInput: (value: string) => void;
+}
+
+const LoginForm = ({handleInput} : Prop) => (
   <div>
-    <h1>Any place in your app!</h1>
+    <h1>Login</h1>
     <Formik
       initialValues={{ email: "", password: "" }}
       validate={(values) => {
@@ -18,10 +22,8 @@ const RandomCatForm = () => (
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+        handleInput(values.email);
+        setSubmitting(false); 
       }}
     >
       {({ isSubmitting }) => (
@@ -39,4 +41,4 @@ const RandomCatForm = () => (
   </div>
 );
 
-export default RandomCatForm;
+export default LoginForm;
