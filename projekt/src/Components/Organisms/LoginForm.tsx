@@ -1,5 +1,4 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { PureComponent } from "react";
 
 type Prop = {
   handleInput: (value: string) => void;
