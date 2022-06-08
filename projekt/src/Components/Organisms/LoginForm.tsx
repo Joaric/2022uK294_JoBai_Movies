@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 
 type Prop = {
   handleInput: (value: any) => void;
-}
+};
 
-const LoginForm = ({handleInput} : Prop) => (
+const LoginForm = ({ handleInput }: Prop) => (
   <div>
     <h1>Login</h1>
     <Formik
       initialValues={{ email: "", password: "" }}
       validate={(values) => {
-        const errors : any  = {};
+        const errors: any = {};
         if (!values.email) {
           errors.email = "Required";
         } else if (
@@ -24,7 +24,7 @@ const LoginForm = ({handleInput} : Prop) => (
       }}
       onSubmit={(values, { setSubmitting }) => {
         handleInput(values);
-        setSubmitting(false); 
+        setSubmitting(false);
       }}
     >
       {({ isSubmitting }) => (
@@ -43,7 +43,7 @@ const LoginForm = ({handleInput} : Prop) => (
 );
 
 export default LoginForm;
-   
+
 // import * as React from 'react';
 // import Avatar from '@mui/material/Avatar';
 // import Button from '@mui/material/Button';
