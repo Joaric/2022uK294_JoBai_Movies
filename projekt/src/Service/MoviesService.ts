@@ -12,7 +12,7 @@ const MoviesService = () => ({
   },
 
   findAll: async () => {
-    const res = await API.post("/movies").catch((error) => {
+    const res = await API.get("/movies").catch((error) => {
       throw error;
     });
     return res.data;

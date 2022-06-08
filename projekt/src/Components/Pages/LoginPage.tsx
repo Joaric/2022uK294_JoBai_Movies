@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import MoviesService from "../../Service/MoviesService";
 import LoginForm from "../Organisms/LoginForm";
+import Navbar from "../Organisms/Navbar";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ export const LoginPage = () => {
 
   return (
     <div>
+      <Navbar />
       <LoginForm handleInput={handleSubmit} />
     </div>
   );

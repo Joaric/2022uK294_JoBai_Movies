@@ -1,6 +1,5 @@
 import axios, { AxiosInstance } from "axios";
 
-// const BASE_URL = 'https://api.thecatapi.com/v1/images';
 const BASE_URL = "http://localhost:3030/";
 const API: AxiosInstance = axios.create({ baseURL: BASE_URL });
 

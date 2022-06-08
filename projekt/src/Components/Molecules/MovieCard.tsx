@@ -1,46 +1,40 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Movies } from '../../Types/MovieModel';
+import { useNavigate } from 'react-router-dom';
 
-type MovieProp = {
-  url : string,
-  email : string
+type Movie = {
+  title : string,
+  release_date : string,
+  major_genre : string,
+  id : number
 }
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
-
-export default function BasicCard({url, email} : MovieProp) {
+export default function BasicCard({title, release_date, major_genre, id} : Movie) {
+  const navigate = useNavigate();
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
+          {id}
         </Typography>
         <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
+          {title}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {email}
+          {major_genre}
         </Typography>
         <Typography variant="body2">
-          {url}
+          {release_date}
           <br />
-          {'"a benevolent smile"'}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" >Learn more</Button>
+        <Button size="small" onClick={() => navigate("./movie/" + id)}>Learn more</Button>
       </CardActions>
     </Card>
   );

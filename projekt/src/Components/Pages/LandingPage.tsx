@@ -1,40 +1,38 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../Molecules/MovieCard";
 import Navbar from "../Organisms/Navbar";
-import LoginForm from "../Organisms/LoginForm";
 import MoviesService from "../../Service/MoviesService";
-import { useNavigate } from "react-router-dom";
-
-type Card = {
-  name: string;
-  imgUrl: string;
-};
+import { Movies } from "../../Types/MovieModel";
+import { Box } from "@mui/material";
 
 export default function LandingPage() {
-  const [movies, setMovies] = useState<string>("");
-  const [cards, setCards] = useState<Card[]>([]);
+  const [movies, setMovies] = useState<Movies[]>([]);
 
   useEffect(() => {
     MoviesService()
       .findAll()
-      .then((movies) => setMovies(movies));
-  }, [cards]);
+      .then((movies2: Movies[]) => {
+        setMovies(movies2);
+      });
+  }, []);
 
+  useEffect(() => console.log(movies), [movies]);
   return (
     <>
       <Navbar />
-
-      <img
-        src={movies}
-        alt="dies ist ein alt text"
-        width="400px"
-        height="400px"
-      ></img>
-
       {/*c == foreach in java*/}
-      {cards.map((c) => (
-        <MovieCard url={c.imgUrl} email={c.name} />
-      ))}
+      {movies.map((c: Movies) => {
+        return (
+          <Box key={c.id}>
+            <MovieCard
+              title={c.Title}
+              release_date={c["Release Date"]}
+              major_genre={c["Major Genre"]}
+              id={c.id}
+            />
+          </Box>
+        );
+      })}
     </>
   );
 }
