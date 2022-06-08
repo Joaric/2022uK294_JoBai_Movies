@@ -1,7 +1,9 @@
+import { Typography } from "@mui/material";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Link } from "react-router-dom";
 
 type Prop = {
-  handleInput: (value: string) => void;
+  handleInput: (value: any) => void;
 }
 
 const LoginForm = ({handleInput} : Prop) => (
@@ -21,7 +23,7 @@ const LoginForm = ({handleInput} : Prop) => (
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
-        handleInput(values.email);
+        handleInput(values);
         setSubmitting(false); 
       }}
     >
@@ -129,7 +131,7 @@ export default LoginForm;
 //               type="submit"
 //               fullWidth
 //               variant="contained"
-//               sx={{ mt: 3, mb: 2 }}
+//               sx={{ mt: 3, mb: 2 }} disabled={isSubmitting}
 //             >
 //               Sign In
 //             </Button>

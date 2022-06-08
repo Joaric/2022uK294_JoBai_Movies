@@ -40,7 +40,7 @@ export default function BasicCard({url, email} : MovieProp) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="small" >Learn more</Button>
       </CardActions>
     </Card>
   );
