@@ -11,6 +11,7 @@ export default function LandingPage() {
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
+
   useEffect(() => {
     MoviesService()
       .findAll(page)

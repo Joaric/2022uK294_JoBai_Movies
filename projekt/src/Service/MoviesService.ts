@@ -10,8 +10,8 @@ const MoviesService = () => ({
     }
   },
 
-  findAll: async (page: number | undefined) => {
-    const res = await API.get(`/movies?_page=${1}&_limit=20`).catch((error) => {
+  findAll: async (page: number) => {
+    const res = await API.get(`/movies?_page=${page}&_limit=20`).catch((error) => {
       throw error;
     });
     return res.data;
