@@ -1,6 +1,4 @@
-import { Typography } from "@mui/material";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { Link } from "react-router-dom";
 
 type Prop = {
   handleInput: (value: any) => void;

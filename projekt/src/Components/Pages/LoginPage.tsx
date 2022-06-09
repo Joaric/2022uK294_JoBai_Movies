@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import MoviesService from "../../Service/MoviesService";
@@ -18,8 +19,10 @@ export const LoginPage = () => {
 
   return (
     <div>
+      <Box >
       <Navbar />
       <LoginForm handleInput={handleSubmit} />
+      </Box>
     </div>
   );
 };
