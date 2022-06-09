@@ -1,4 +1,3 @@
-import { Movies } from "../Types/MovieModel";
 import API from "./AxiosInstances";
 
 const MoviesService = () => ({
@@ -11,8 +10,8 @@ const MoviesService = () => ({
     }
   },
 
-  findAll: async () => {
-    const res = await API.get("/movies").catch((error) => {
+  findAll: async (page: number | undefined) => {
+    const res = await API.get(`/movies?_page=${1}&_limit=20`).catch((error) => {
       throw error;
     });
     return res.data;

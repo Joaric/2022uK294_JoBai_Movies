@@ -3,19 +3,21 @@ import MovieCard from "../Molecules/MovieCard";
 import Navbar from "../Organisms/Navbar";
 import MoviesService from "../../Service/MoviesService";
 import { Movies } from "../../Types/MovieModel";
-import { Box } from "@mui/material";
+import { Box,  TablePagination } from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress';
 
 export default function LandingPage() {
   const [movies, setMovies] = useState<Movies[]>([]);
+  const [page, setPage] = useState<number>(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   useEffect(() => {
     MoviesService()
-      .findAll()
+      .findAll(page)
       .then((movies2: Movies[]) => {
         setMovies(movies2);
       });
-  }, []);
+  }, [page]);
 
   if(movies.length === 0 ) {
     return (
@@ -25,9 +27,30 @@ export default function LandingPage() {
     );
   }
 
+  const handleChangePage = (
+    event: React.MouseEvent<HTMLButtonElement> | null,
+    newPage: number,
+  ) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    // setPage(0);
+  };
+
+  
   return (
     <>
       <Navbar />
+      <TablePagination component="div"
+              count={100}
+              page={page}
+              onPageChange={handleChangePage}
+              rowsPerPage={rowsPerPage}
+              onRowsPerPageChange={handleChangeRowsPerPage}/>
       {/*c == foreach in java*/}
       {movies.map((c: Movies) => {
         return (
