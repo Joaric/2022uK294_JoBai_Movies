@@ -1,8 +1,7 @@
 
+import { Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Navbar from "../Organisms/Navbar";
 
 const validationSchema = yup.object({
@@ -59,7 +58,7 @@ export const AddMovie = () => {
           fullWidth
           id="title"
           name="title"
-          label="title"
+          label="Title"
           value={formik.values.title}
           onChange={formik.handleChange}
           error={formik.touched.title && Boolean(formik.errors.title)}
